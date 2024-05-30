@@ -28,6 +28,16 @@ public partial class Player : CharacterBody2D
 		}
 		var finalVector = movementVetor.Normalized() * velocity * (float)delta;
 		var collideResult = MoveAndCollide(finalVector);
+		if(collideResult != null) {
+			var collider = collideResult.GetCollider();
+			if(collider is Edible) {
+				Edible edible = (Edible)collider;
+				if(edible.size < size - 0.2) {
+					ChangeSize(edible.size * 0.5f);
+					edible.eat();
+				}
+			}
+		}
 	}
 
 	public void ChangeSize(float changeBy) {
