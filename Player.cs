@@ -32,10 +32,7 @@ public partial class Player : CharacterBody2D
 			var collider = collideResult.GetCollider();
 			if(collider is Edible) {
 				Edible edible = (Edible)collider;
-				if(edible.size < size - 0.2) {
-					ChangeSize(edible.size * 0.5f);
-					edible.eat();
-				}
+				CollideWith(edible);
 			}
 		}
 	}
@@ -44,5 +41,12 @@ public partial class Player : CharacterBody2D
 		size += changeBy;
 		if(size < 1) size = 1;
 		Scale = Vector2.One * size;
+	}
+
+	public void CollideWith(Edible edible) {
+		if(edible.size < size - 0.2) {
+			ChangeSize(edible.size * 0.5f);
+			edible.eat();
+		}
 	}
 }
