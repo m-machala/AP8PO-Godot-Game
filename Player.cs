@@ -45,7 +45,7 @@ public partial class Player : CharacterBody2D
 
 	public void CollideWith(Edible edible) {
 		if(edible.size < size - 0.2) {
-			ChangeSize(edible.size * 0.5f);
+			ChangeSize(edible.size * 0.1f);
 			edible.eat();
 		}
 	}
