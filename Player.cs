@@ -5,7 +5,7 @@ public partial class Player : CharacterBody2D
 {
 	public float velocity = 100f;
 	public float size = 1f;
-    public override void _PhysicsProcess(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 movementVetor = new Vector2(0, 0);
 		if(Input.IsActionPressed("move_up")) {

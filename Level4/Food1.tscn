@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bddu6of65l5h0"]
+
+[ext_resource type="Script" path="res://StationaryFood.cs" id="1_socai"]
+[ext_resource type="Texture2D" uid="uid://10ow05l6es1r" path="res://assets/Level4/spaceMeteors.png" id="1_ug4o4"]
+
+[node name="Food1" type="CharacterBody2D"]
+script = ExtResource("1_socai")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ug4o4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-71, -80, 3, -105, 62, -86, 105, -32, 101, 38, 66, 83, -1, 104, -71, 97, -104, 27, -106, -33)

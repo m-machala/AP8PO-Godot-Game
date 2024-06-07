@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c37pqu4hq5uqc"]
+
+[ext_resource type="Script" path="res://StationaryFood.cs" id="1_g2ime"]
+[ext_resource type="Texture2D" uid="uid://cna3gugap6lkf" path="res://assets/Level4/planet08.png" id="2_vsfok"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5q7d"]
+radius = 514.429
+
+[node name="Food6" type="CharacterBody2D"]
+script = ExtResource("1_g2ime")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vsfok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b5q7d")

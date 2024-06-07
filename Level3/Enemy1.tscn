@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg8q4c56tbfn2"]
+
+[ext_resource type="Texture2D" uid="uid://b1a74gv5dy74l" path="res://assets/Level3/enemyGreen3.png" id="1_qvhuu"]
+
+[node name="Enemy1" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qvhuu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-9, 31, -37, 42, -52, -3, -25, -37, 1, -43, 26, -35, 51, -3, 38, 41, 8, 31)
