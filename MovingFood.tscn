@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://3wt4rbmjalyc"]
+[gd_scene load_steps=4 format=3 uid="uid://c5w2qavilrfb3"]
 
-[ext_resource type="Script" path="res://StraightMovingFood.cs" id="1_wwlg8"]
+[ext_resource type="Script" path="res://scripts/StraightMovingFood.cs" id="1_wwlg8"]
 [ext_resource type="Texture2D" uid="uid://bg2bdjf0vicuc" path="res://assets/enemy.png" id="2_jcjib"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_un8vc"]
