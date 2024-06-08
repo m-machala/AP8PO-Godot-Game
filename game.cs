@@ -7,14 +7,10 @@ public partial class game : Node2D
 	static int timeIncrementSeconds = 150;
 	int timeLimitSeconds = 0;
 	double timeElapsedSeconds = 0;
-	Node currentLevelInstance = null;
-	PackedScene level1 = GD.Load<PackedScene>("res://Levels/Level1/Level1.tscn");
-	PackedScene level2 = GD.Load<PackedScene>("res://Levels/Level2/Level2.tscn");
-	PackedScene level3 = GD.Load<PackedScene>("res://Levels/Level3/Level3.tscn");
-	PackedScene level4 = GD.Load<PackedScene>("res://Levels/Level4/Level4.tscn");
 	List<PackedScene> levels = new List<PackedScene>();
-	public Label label;
+	public Label clockLabel;
 	int currentLevel = 1;
+	Node currentLevelInstance = null;
 
 	enum State 
 	{
@@ -26,11 +22,11 @@ public partial class game : Node2D
 	State gameState = State.Start;
 	public override void _Ready()
 	{
-		label = GetNode<Label>("Label");
-		levels.Add(level1);
-		levels.Add(level2);
-		levels.Add(level3);
-		levels.Add(level4);
+		clockLabel = GetNode<Label>("Clock");
+		levels.Add(GD.Load<PackedScene>("res://Levels/Level1/Level1.tscn"));
+		levels.Add(GD.Load<PackedScene>("res://Levels/Level2/Level2.tscn"));
+		levels.Add(GD.Load<PackedScene>("res://Levels/Level3/Level3.tscn"));
+		levels.Add(GD.Load<PackedScene>("res://Levels/Level4/Level4.tscn"));
 	}
 
 	public override void _Process(double delta)
@@ -44,7 +40,7 @@ public partial class game : Node2D
 
 			case State.Level:
 			timeElapsedSeconds += delta;
-			label.Text = GetTimeString();
+			clockLabel.Text = GetTimeString();
 			break;
 
 			case State.GameOver:
@@ -71,6 +67,21 @@ public partial class game : Node2D
 		int RemainingSeconds = (int)secondsRemainder;
 		secondsRemainder -= RemainingSeconds;
 		
-		return $"{RemainingMinutes:D1}:{RemainingSeconds:D2}.{(int)(secondsRemainder * 1000):D3}";
+		return $"{RemainingMinutes:D1}:{RemainingSeconds:D2}.{(int)(secondsRemainder * 10):D1}";
+	}
+
+	public void NextLevel() {
+		if(currentLevelInstance != null) {
+			currentLevelInstance.QueueFree();
+		}
+		currentLevel++;
+		StartLevel(currentLevel);
+	}
+
+	public void Die() {
+		if(currentLevelInstance != null) {
+			currentLevelInstance.QueueFree();
+		}
+		gameState = State.GameOver;
 	}
 }

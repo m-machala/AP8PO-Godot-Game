@@ -3,15 +3,19 @@ using System;
 
 public partial class Level1 : Node2D
 {
-	PackedScene playerScene = GD.Load<PackedScene>("res://Player.tscn");	
+	Player playerInstance;	
 
 	public override void _Ready()
 	{
-		var playerInstance = playerScene.Instantiate();
+		playerInstance = (Player)GD.Load<PackedScene>("res://Player.tscn").Instantiate();
 		AddChild(playerInstance);
 	}
 
 	public override void _Process(double delta)
 	{
+		if(playerInstance.size > 1.5) {
+			game game = (game)GetParent();
+			game.NextLevel();
+		}
 	}
 }
