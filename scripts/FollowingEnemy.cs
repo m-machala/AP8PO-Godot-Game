@@ -1,15 +1,38 @@
 using Godot;
 using System;
 
-public partial class FollowingEnemy : Node
+public partial class FollowingEnemy : Edible
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public float speed = 50f;
+	public override void _PhysicsProcess(double delta)
 	{
+		var movementVector = getPlayerPosition() - Position;
+
+		if(getPlayerSize() > size + 0.2) {
+			movementVector *= -1;
+		}
+
+		var collideResult = MoveAndCollide(movementVector.Normalized() * speed * (float)delta);
+
+		if(collideResult != null) {
+			var collider = collideResult.GetCollider();
+			if(collider is Player) {
+				Edible me = this;
+				Player player = (Player)collider;
+				player.CollideWith(me);
+			}
+		}
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+	public Player getPlayer() {
+		return ((Level)GetParent()).playerInstance;
+	}
+
+	public Vector2 getPlayerPosition() {
+		return getPlayer().Position;
+	}
+
+	public float getPlayerSize() {
+		return getPlayer().size;
 	}
 }
