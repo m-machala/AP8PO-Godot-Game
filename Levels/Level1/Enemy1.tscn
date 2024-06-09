@@ -7,6 +7,9 @@
 radius = 35.0
 
 [node name="Enemy1" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_eulug")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
