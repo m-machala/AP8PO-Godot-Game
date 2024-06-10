@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/StationaryFood.cs" id="1_udysd"]
 
 [node name="Food2" type="CharacterBody2D"]
-scale = Vector2(1.67521, 1.67521)
+scale = Vector2(1.48621, 1.48621)
 script = ExtResource("1_udysd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
