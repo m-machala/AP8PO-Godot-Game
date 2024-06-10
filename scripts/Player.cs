@@ -48,8 +48,8 @@ public partial class Player : CharacterBody2D
 			ChangeSize(edible.size * 0.05f);
 			edible.eat();
 		}
-		else if(edible is FollowingEnemy) {
-			ChangeSize(-(edible.size / 10));
+		else if(edible.hostile) {
+			ChangeSize(-(edible.size / 15));
 		}
 	}
 }

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public partial class Level1 : Level
 {
 	public List<(PackedScene, double)> stationaryFoodScenes = new List<(PackedScene, double)>();
-	public RandomNumberGenerator rng = new RandomNumberGenerator();
 	public static int startingFoodCount = 10;
 	public double foodTimer = 0;
 	public override void _Ready()
@@ -16,6 +15,7 @@ public partial class Level1 : Level
 		var mainEnemy = (FollowingEnemy)GD.Load<PackedScene>("res://Levels/Level1/Enemy1.tscn").Instantiate();
 		mainEnemy.Position = new Vector2(100, 100);
 		mainEnemy.size = 2;
+		mainEnemy.hostile = true;
 		mainEnemy.Connect("Eaten", new Callable(this, nameof(MainEnemyWasEaten)));
 		AddChild(mainEnemy);
 

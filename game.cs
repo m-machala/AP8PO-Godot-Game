@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class game : Node2D
 {
-	static int timeIncrementSeconds = 150;
+	static int timeIncrementSeconds = 210;
 	int timeLimitSeconds = 0;
 	double timeElapsedSeconds = 0;
 	List<PackedScene> levels = new List<PackedScene>();
@@ -41,6 +41,10 @@ public partial class game : Node2D
 			case State.Level:
 			timeElapsedSeconds += delta;
 			clockLabel.Text = GetTimeString();
+
+			if(Input.IsActionJustPressed("debug_next_level")) {
+				NextLevel();
+			}
 			break;
 
 			case State.GameOver:

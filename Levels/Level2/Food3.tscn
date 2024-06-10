@@ -4,10 +4,12 @@
 [ext_resource type="Script" path="res://scripts/StationaryFood.cs" id="1_yvchn"]
 
 [node name="Food3" type="CharacterBody2D"]
+scale = Vector2(1.42226, 1.42226)
 script = ExtResource("1_yvchn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tqkym")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-15, -14, 8, -18, 21, -3, 7, 19, -8, 17, -21, 5)

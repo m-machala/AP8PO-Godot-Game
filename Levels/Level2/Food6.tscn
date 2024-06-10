@@ -10,5 +10,6 @@ script = ExtResource("1_lpxw1")
 texture = ExtResource("2_davrn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(65.56, 24.4827)
 polygon = PackedVector2Array(-151.56, -50.4827, -108.56, -49.4827, -90.56, -33.4827, -79.56, -44.4827, -50.56, -44.4827, -40.56, -33.4827, -22.56, -50.4827, 19.44, -50.4827, 20.44, 1.5173, -23.56, 1.5173, -40.56, -15.4827, -51.56, -4.4827, -79.56, -4.4827, -89.56, -15.4827, -108.56, 1.5173, -151.56, 1.5173)
