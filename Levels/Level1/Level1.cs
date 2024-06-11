@@ -7,6 +7,8 @@ public partial class Level1 : Level
 	public List<(PackedScene, double)> stationaryFoodScenes = new List<(PackedScene, double)>();
 	public static int startingFoodCount = 10;
 	public double foodTimer = 0;
+	FollowingEnemy mainEnemy;
+	bool missionChanged = false;
 	public override void _Ready()
 	{
 		playerInstance = (Player)GD.Load<PackedScene>("res://Player.tscn").Instantiate();
@@ -14,7 +16,7 @@ public partial class Level1 : Level
 		playerInstance.Connect("Died", new Callable(parent, nameof(parent.Die)));
 		AddChild(playerInstance);
 
-		var mainEnemy = (FollowingEnemy)GD.Load<PackedScene>("res://Levels/Level1/Enemy1.tscn").Instantiate();
+		mainEnemy = (FollowingEnemy)GD.Load<PackedScene>("res://Levels/Level1/Enemy1.tscn").Instantiate();
 		mainEnemy.Position = new Vector2(100, 100);
 		mainEnemy.size = 2;
 		mainEnemy.hostile = true;
@@ -26,6 +28,8 @@ public partial class Level1 : Level
 		for(int i = 0; i < startingFoodCount; i++) {
 			SpawnFood();
 		}
+
+		mission = "- Eat meteors to grow in size\n- Avoid enemy";
 	}
 
 	public override void _Process(double delta)
@@ -36,6 +40,10 @@ public partial class Level1 : Level
 			SpawnFood();
 		}
 
+		if(playerInstance.size >= mainEnemy.size + 0.2 && !missionChanged) {
+			mission = "- Eat enemy to go to next level";
+			missionChanged = true;
+		}
 	}
 
 	public void LoadFoodScenes() {
@@ -50,7 +58,7 @@ public partial class Level1 : Level
 	public void SpawnFood() {
 		var newFoodIndex = -1;
 		for(int i = 0; i < 3; i++) {
-			if(newFoodIndex < 0 || stationaryFoodScenes[newFoodIndex].Item2 > playerInstance.size - 0.3) {
+			if(newFoodIndex < 0 || stationaryFoodScenes[newFoodIndex].Item2 > playerInstance.size - 0.2) {
 				newFoodIndex = rng.RandiRange(0, stationaryFoodScenes.Count - 1);
 			}
 		}

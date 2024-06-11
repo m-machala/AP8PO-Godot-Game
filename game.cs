@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class game : Node2D
 {
@@ -9,8 +10,11 @@ public partial class game : Node2D
 	double timeElapsedSeconds = 0;
 	List<PackedScene> levels = new List<PackedScene>();
 	public Label clockLabel;
+	public Label scoreLabel;
+	public Label missionLabel;
 	int currentLevel = 1;
-	Node currentLevelInstance = null;
+	List<int> scores = new List<int>();
+	Level currentLevelInstance = null;
 
 	enum State 
 	{
@@ -23,6 +27,8 @@ public partial class game : Node2D
 	public override void _Ready()
 	{
 		clockLabel = GetNode<Label>("Clock");
+		scoreLabel = GetNode<Label>("Score");
+		missionLabel = GetNode<Label>("Mission");
 		levels.Add(GD.Load<PackedScene>("res://Levels/Level1/Level1.tscn"));
 		levels.Add(GD.Load<PackedScene>("res://Levels/Level2/Level2.tscn"));
 		levels.Add(GD.Load<PackedScene>("res://Levels/Level3/Level3.tscn"));
@@ -40,7 +46,9 @@ public partial class game : Node2D
 
 			case State.Level:
 			timeElapsedSeconds += delta;
-			clockLabel.Text = GetTimeString();
+			RenderTime();
+			RenderScore();
+			RenderMission();
 
 			if(Input.IsActionJustPressed("debug_next_level")) {
 				NextLevel();
@@ -53,11 +61,11 @@ public partial class game : Node2D
 	}
 
 	public void StartLevel(int level) {
-		if(level > levels.Count || level < 1) {
+		if(level > levels.Count || level < 1 || timeElapsedSeconds > timeLimitSeconds) {
 			gameState = State.GameOver;
 			return;
 		}
-		var levelInstance = levels[level - 1].Instantiate();
+		var levelInstance = (Level)levels[level - 1].Instantiate();
 		currentLevelInstance = levelInstance;
 		AddChild(levelInstance);
 		gameState = State.Level;
@@ -74,8 +82,13 @@ public partial class game : Node2D
 		return $"{RemainingMinutes:D1}:{RemainingSeconds:D2}.{(int)(secondsRemainder * 10):D1}";
 	}
 
+	public void RenderTime() {
+		clockLabel.Text = GetTimeString();
+	}
+
 	public void NextLevel() {
 		if(currentLevelInstance != null) {
+			scores.Add(GetCurrentLevelScore());
 			currentLevelInstance.QueueFree();
 		}
 		currentLevel++;
@@ -87,5 +100,28 @@ public partial class game : Node2D
 			currentLevelInstance.QueueFree();
 		}
 		gameState = State.GameOver;
+	}
+
+	public int GetCurrentLevelScore() {
+		double score = 0;
+		if(currentLevelInstance != null) {
+			score = currentLevelInstance.playerInstance.size * 1000 * currentLevel - 1000;
+		}
+		return (int)score;
+	}
+
+	public int GetFullScore() {
+		return scores.Sum() + GetCurrentLevelScore();
+	}
+
+	public void RenderScore() {
+		int score = GetFullScore();
+		scoreLabel.Text = $"Score: {score}";
+	}
+
+	public void RenderMission() {
+		if(currentLevelInstance != null) {
+			missionLabel.Text = currentLevelInstance.mission;
+		}
 	}
 }

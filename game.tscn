@@ -9,9 +9,27 @@ script = ExtResource("1_kpxyj")
 
 [node name="Clock" type="Label" parent="."]
 z_index = 10
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 39.0
+offset_top = 30.0
+offset_right = 79.0
+offset_bottom = 72.0
 theme_override_font_sizes/font_size = 30
+
+[node name="Score" type="Label" parent="."]
+z_index = 10
+offset_left = 21.0
+offset_top = 578.0
+offset_right = 61.0
+offset_bottom = 620.0
+theme_override_font_sizes/font_size = 30
+
+[node name="Mission" type="Label" parent="."]
+z_index = 10
+offset_left = 824.0
+offset_top = 39.0
+offset_right = 864.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 16
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-75, 331)

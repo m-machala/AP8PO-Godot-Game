@@ -7,6 +7,8 @@ public partial class Level2 : Level
 	public List<(PackedScene, double)> stationaryFoodScenes = new List<(PackedScene, double)>();
 	public static int startingFoodCount = 10;
 	public double foodTimer = 0;
+	public StationaryFood mainFood;
+	public bool missionChanged = false;
 	public override void _Ready()
 	{
 		playerInstance = (Player)GD.Load<PackedScene>("res://Player.tscn").Instantiate();
@@ -21,7 +23,7 @@ public partial class Level2 : Level
 		mainEnemy.hostile = true;
 		AddChild(mainEnemy);
 
-		var mainFood = (StationaryFood)GD.Load<PackedScene>("res://Levels/Level2/Food6.tscn").Instantiate();
+		mainFood = (StationaryFood)GD.Load<PackedScene>("res://Levels/Level2/Food6.tscn").Instantiate();
 		mainFood.Connect("Eaten", new Callable(this, nameof(MainFoodWasEaten)));
 		mainFood.size = 2.5f;
 		var viewportSize = GetViewport().GetVisibleRect().Size;
@@ -33,6 +35,8 @@ public partial class Level2 : Level
 		for(int i = 0; i < startingFoodCount; i++) {
 			SpawnFood();
 		}
+
+		mission = "- Eat meteors to grow in size\n- Avoid enemy\n- Avoid missiles";
 	}
 
 	public override void _Process(double delta)
@@ -42,7 +46,9 @@ public partial class Level2 : Level
 			foodTimer -= 4;
 			SpawnFood();
 		}
-
+		if(playerInstance.size > mainFood.size + 0.2 && !missionChanged) {
+			mission = "- Eat space station to go to next level\n- Avoid enemy\n- Avoid missiles";
+		}
 	}
 
 	public void LoadFoodScenes() {

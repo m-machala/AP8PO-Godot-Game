@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Level4 : Node2D
+public partial class Level4 : Level
 {
 	Player playerInstance;	
 	public override void _Ready()
