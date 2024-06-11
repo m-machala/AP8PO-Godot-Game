@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cfqtk6ijl2l16" path="res://assets/Level2/enemyBlue1.png" id="1_j4v38"]
 
 [node name="Enemy1" type="CharacterBody2D"]
+z_index = 2
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_cyjjw")

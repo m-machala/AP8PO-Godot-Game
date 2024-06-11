@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://6ksp2eo14ck8"]
+[gd_scene load_steps=3 format=3 uid="uid://6ksp2eo14ck8"]
 
 [ext_resource type="Script" path="res://game.cs" id="1_kpxyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3pqg"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_kpxyj")
@@ -10,3 +12,41 @@ z_index = 10
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 30
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-75, 331)
+scale = Vector2(1, 41.56)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_g3pqg")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1231, 333)
+scale = Vector2(0.979143, 41.2753)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_g3pqg")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(576, 721)
+rotation = -1.57079
+scale = Vector2(1.01877, 66.3441)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("RectangleShape2D_g3pqg")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(578, -74)
+rotation = -1.57079
+scale = Vector2(1, 63.9341)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("RectangleShape2D_g3pqg")

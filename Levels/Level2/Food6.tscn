@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bmcnw4ul405l3" path="res://assets/Level2/spaceStation.png" id="2_davrn"]
 
 [node name="Food6" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_lpxw1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
