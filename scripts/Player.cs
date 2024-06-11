@@ -5,6 +5,8 @@ public partial class Player : CharacterBody2D
 {
 	public float velocity = 100f;
 	public float size = 1f;
+	[Signal]
+	public delegate void DiedEventHandler();
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 movementVetor = new Vector2(0, 0);
@@ -39,7 +41,9 @@ public partial class Player : CharacterBody2D
 
 	public void ChangeSize(float changeBy) {
 		size += changeBy;
-		if(size < 1) size = 1;
+		if(size < 1) {
+			EmitSignal(SignalName.Died);
+		}
 		Scale = Vector2.One * size;
 	}
 

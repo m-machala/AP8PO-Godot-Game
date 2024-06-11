@@ -13,6 +13,8 @@ public partial class Level2 : Level
 		AddChild(playerInstance);
 
 		var mainEnemy = (ShootingEnemy)GD.Load<PackedScene>("res://Levels/Level2/Enemy1.tscn").Instantiate();
+		game parent = (game)GetParent();
+		playerInstance.Connect("Died", new Callable(parent, nameof(parent.Die)));
 		mainEnemy.projectile = GD.Load<PackedScene>("res://Levels/Level2/Missile.tscn");
 		mainEnemy.Position = new Vector2(100, 100);
 		mainEnemy.size = 4f;
@@ -59,6 +61,7 @@ public partial class Level2 : Level
 			}
 		}
 		var newFood = (Edible)stationaryFoodScenes[newFoodIndex].Item1.Instantiate();
+		newFood.Rotate(rng.Randf() * 2 * (float)Math.PI);
 		var viewportSize = GetViewport().GetVisibleRect().Size;
 		newFood.Position = new Vector2(rng.RandiRange(0, (int)viewportSize.X - 1), rng.RandiRange(0, (int)viewportSize.Y - 1));
 		newFood.size = (float)stationaryFoodScenes[newFoodIndex].Item2;

@@ -12,8 +12,8 @@ public partial class StraightMovingProjectile : StraightMovingFood
 				Edible me = this;
 				Player player = (Player)collider;
 				player.CollideWith(me);
-				QueueFree();
 			}
+			QueueFree();
 		}
 	}
 }
