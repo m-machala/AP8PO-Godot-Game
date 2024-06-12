@@ -33,15 +33,13 @@ public partial class game : Node2D
 		levels.Add(GD.Load<PackedScene>("res://Levels/Level2/Level2.tscn"));
 		levels.Add(GD.Load<PackedScene>("res://Levels/Level3/Level3.tscn"));
 		levels.Add(GD.Load<PackedScene>("res://Levels/Level4/Level4.tscn"));
+		OpenStartMenu();
 	}
 
 	public override void _Process(double delta)
 	{
 		switch(gameState) {
 			case State.Start:
-			currentLevel = 1;
-			timeElapsedSeconds = 0;
-			StartLevel(1);
 			break;
 
 			case State.Level:
@@ -63,6 +61,7 @@ public partial class game : Node2D
 	public void StartLevel(int level) {
 		if(level > levels.Count || level < 1 || timeElapsedSeconds > timeLimitSeconds) {
 			gameState = State.GameOver;
+			OpenEndMenu();
 			return;
 		}
 		var levelInstance = (Level)levels[level - 1].Instantiate();
@@ -100,6 +99,7 @@ public partial class game : Node2D
 			currentLevelInstance.QueueFree();
 		}
 		gameState = State.GameOver;
+		OpenEndMenu();
 	}
 
 	public int GetCurrentLevelScore() {
@@ -123,5 +123,32 @@ public partial class game : Node2D
 		if(currentLevelInstance != null) {
 			missionLabel.Text = currentLevelInstance.mission;
 		}
+	}
+
+	public void StartGame() {
+		StartLevel(1);
+	}
+
+	public void RestartGame() {
+		timeIncrementSeconds = 210;
+		timeLimitSeconds = 0;
+		timeElapsedSeconds = 0;
+	    currentLevel = 1;
+	    scores = new List<int>();
+		OpenStartMenu();
+		gameState = State.Start;
+	}
+
+	public void OpenStartMenu() {
+		var UI = (Control)GD.Load<PackedScene>("res://Levels/Other/Start.tscn").Instantiate();
+		AddChild(UI);
+	}
+
+	public void OpenEndMenu() {
+		var UI = (End)GD.Load<PackedScene>("res://Levels/Other/End.tscn").Instantiate();
+		scoreLabel.Text = "";
+		clockLabel.Text = "";
+		missionLabel.Text = "";
+		AddChild(UI);
 	}
 }
