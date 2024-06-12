@@ -46,7 +46,7 @@ public partial class ShootingEnemy : Edible
 				projectileInstance.size = 4;
 				projectileInstance.speed = 175;
 				projectileInstance.Rotate(Rotation + (float)Math.PI / 2);
-				projectileInstance.Position = Position + movement.Normalized() * 50;
+				projectileInstance.Position = Position + movement.Normalized() * 60;
 				GetParent().AddChild(projectileInstance);
 			}
 		}
