@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bce1segtvgbkg"]
+[gd_scene load_steps=3 format=3 uid="uid://bce1segtvgbkg"]
 
 [ext_resource type="Script" path="res://Levels/Level2/Level2.cs" id="1_oq2pv"]
+[ext_resource type="AudioStream" uid="uid://ckhs6mqcykqwc" path="res://assets/Sound/space.mp3" id="2_1eta2"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_oq2pv")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1eta2")
+autoplay = true
