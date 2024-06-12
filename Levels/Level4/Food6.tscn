@@ -7,10 +7,12 @@
 radius = 514.429
 
 [node name="Food6" type="CharacterBody2D"]
+scale = Vector2(0.128101, 0.128101)
 script = ExtResource("1_g2ime")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_vsfok")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_b5q7d")

@@ -1,17 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://bl6ykvn0hh0uw"]
 
-[ext_resource type="Script" path="res://scripts/StationaryFood.cs" id="1_0ohg4"]
+[ext_resource type="Script" path="res://scripts/StraightMovingProjectile.cs" id="1_yfaln"]
 [ext_resource type="Texture2D" uid="uid://c2rtit6um6opn" path="res://assets/Level4/spaceMissiles.png" id="2_ly35n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lb4jp"]
 size = Vector2(15, 51)
 
 [node name="Missile" type="CharacterBody2D"]
-script = ExtResource("1_0ohg4")
+z_index = 1
+scale = Vector2(0.522138, 0.522138)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_yfaln")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ly35n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_lb4jp")

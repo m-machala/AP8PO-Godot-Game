@@ -1,11 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs1tidyiiqt30"]
+[gd_scene load_steps=3 format=3 uid="uid://cs1tidyiiqt30"]
 
 [ext_resource type="Texture2D" uid="uid://bevt2o8t7sx5d" path="res://assets/Level4/enemyRed4.png" id="1_cyqh8"]
+[ext_resource type="Script" path="res://scripts/ShootingEnemy.cs" id="1_xa6u0"]
 
 [node name="Enemy1" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(0.514073, 0.514073)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_xa6u0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cyqh8")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+rotation = -1.57079
 polygon = PackedVector2Array(-19, -43, 19, -43, 39, -29, 39, 20, 10, 42, -10, 42, -41, 20, -41, -29)
