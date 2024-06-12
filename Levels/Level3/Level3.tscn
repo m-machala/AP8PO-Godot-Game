@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqgx1m46cgcwh"]
+[gd_scene load_steps=3 format=3 uid="uid://dqgx1m46cgcwh"]
 
 [ext_resource type="Script" path="res://Levels/Level3/Level3.cs" id="1_intnf"]
+[ext_resource type="AudioStream" uid="uid://c05htqu2cob23" path="res://assets/Sound/stardust-danijel-zambo.mp3" id="2_wiyr4"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_intnf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_wiyr4")
+autoplay = true

@@ -133,8 +133,8 @@ public partial class game : Node2D
 		timeIncrementSeconds = 210;
 		timeLimitSeconds = 0;
 		timeElapsedSeconds = 0;
-	    currentLevel = 1;
-	    scores = new List<int>();
+		currentLevel = 1;
+		scores = new List<int>();
 		OpenStartMenu();
 		gameState = State.Start;
 	}
