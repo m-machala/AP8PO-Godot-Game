@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/FollowingEnemy.cs" id="1_eulug"]
 [ext_resource type="Texture2D" uid="uid://twdprhhk77qe" path="res://assets/Level1/enemyPink_round.png" id="2_grhwy"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_de4ny"]
-radius = 35.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_72y4p"]
+radius = 42.107
 
 [node name="Enemy1" type="CharacterBody2D"]
 z_index = 1
@@ -13,7 +13,8 @@ collision_mask = 2
 script = ExtResource("1_eulug")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.22, 1.22)
 texture = ExtResource("2_grhwy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_de4ny")
+shape = SubResource("CircleShape2D_72y4p")

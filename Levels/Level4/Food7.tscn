@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://kibmddrgapsk" path="res://assets/Level4/planet07.png" id="2_wqlhh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5q7d"]
-radius = 514.429
+radius = 436.604
 
 [node name="Food7" type="CharacterBody2D"]
 scale = Vector2(0.176599, 0.176599)
 script = ExtResource("1_q27u2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.85, 0.85)
 texture = ExtResource("2_wqlhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_b5q7d")
