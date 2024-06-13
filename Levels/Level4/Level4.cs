@@ -61,7 +61,7 @@ public partial class Level4 : Level
 		var newFood = (Edible)stationaryFoodScenes[newFoodIndex].Item1.Instantiate();
 		newFood.Rotate(rng.Randf() * 2 * (float)Math.PI);
 		var viewportSize = GetViewport().GetVisibleRect().Size;
-		newFood.Position = new Vector2(rng.RandiRange(0, (int)viewportSize.X - 1), rng.RandiRange(0, (int)viewportSize.Y - 1));
+		newFood.Position = new Vector2(rng.RandiRange(10, (int)viewportSize.X - 11), rng.RandiRange(10, (int)viewportSize.Y - 11));
 		newFood.size = (float)stationaryFoodScenes[newFoodIndex].Item2;
 		AddChild(newFood);
 	}

@@ -5,7 +5,7 @@ using System.Linq;
 
 public partial class game : Node2D
 {
-	static int timeIncrementSeconds = 210;
+	static int timeIncrementSeconds = 150;
 	int timeLimitSeconds = 0;
 	double timeElapsedSeconds = 0;
 	List<PackedScene> levels = new List<PackedScene>();
@@ -47,6 +47,10 @@ public partial class game : Node2D
 			RenderTime();
 			RenderScore();
 			RenderMission();
+
+			if(timeElapsedSeconds > timeLimitSeconds) {
+				Die();
+			}
 
 			if(Input.IsActionJustPressed("debug_next_level")) {
 				NextLevel();
