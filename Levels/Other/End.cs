@@ -7,9 +7,9 @@ public partial class End : Control
 	private Button buttonQuit;
 	public Label labelScore;
 
-    public override void _Ready()
-    {
-        buttonMenu = GetNode<Button>("MarginContainer/VBoxContainer/Menu");
+	public override void _Ready()
+	{
+		buttonMenu = GetNode<Button>("MarginContainer/VBoxContainer/Menu");
 		buttonQuit = GetNode<Button>("MarginContainer/VBoxContainer/Quit");
 		labelScore = GetNode<Label>("MarginContainer/VBoxContainer/Score");
 
@@ -17,7 +17,7 @@ public partial class End : Control
 		buttonQuit.Connect("pressed", new Callable(this, nameof(QuitPressed)));
 		int score = ((game)GetParent()).GetFullScore();
 		labelScore.Text = $"Score: {score}";
-    }
+	}
 
 	public void MenuPressed() {
 		((game)GetParent()).RestartGame();

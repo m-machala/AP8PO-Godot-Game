@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://k6eu26nn1uxb"]
+[gd_scene load_steps=4 format=3 uid="uid://k6eu26nn1uxb"]
 
 [ext_resource type="Script" path="res://Levels/Level1/Level1.cs" id="1_bduh1"]
 [ext_resource type="AudioStream" uid="uid://cfqcid0mat4jr" path="res://assets/Sound/milky-way-mountaineer.mp3" id="2_ctotd"]
+[ext_resource type="Texture2D" uid="uid://cchx0g3fvh544" path="res://assets/darkPurple.png" id="4_ntv41"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_bduh1")
@@ -9,3 +10,9 @@ script = ExtResource("1_bduh1")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ctotd")
 autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1151.0
+offset_bottom = 648.0
+texture = ExtResource("4_ntv41")
+stretch_mode = 1
