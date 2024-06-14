@@ -1,4 +1,4 @@
-# Nepojmenovaná hra
+# Stellar Snack
 
 ## Koncept
 Hra je převážně inspirována flash hrou "Tasty Planet" a herní sérií "Katamari Damacy".

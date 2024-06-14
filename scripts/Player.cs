@@ -22,12 +22,6 @@ public partial class Player : CharacterBody2D
 		if(Input.IsActionPressed("move_right")) {
 			movementVetor.X += 1;
 		}
-		if(Input.IsActionPressed("debug_increase_size")) {
-			ChangeSize(0.001f);
-		}
-		if(Input.IsActionPressed("debug_decrease_size")) {
-			ChangeSize(-0.001f);
-		}
 		var finalVector = movementVetor.Normalized() * velocity * (float)delta;
 		var collideResult = MoveAndCollide(finalVector);
 		if(collideResult != null) {

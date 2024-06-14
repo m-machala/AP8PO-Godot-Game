@@ -51,10 +51,6 @@ public partial class game : Node2D
 			if(timeElapsedSeconds > timeLimitSeconds) {
 				Die();
 			}
-
-			if(Input.IsActionJustPressed("debug_next_level")) {
-				NextLevel();
-			}
 			break;
 
 			case State.GameOver:
